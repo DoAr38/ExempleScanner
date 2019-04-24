@@ -38,8 +38,8 @@
     <body>
 
         <p>
-            <a target="_blank" onclick="scan();return false" style="text-decoration: none"><button>Scan</button></a>
-            <a target="_blank" onclick="email();return false" style="text-decoration: none"><button>Mail</button></a>
+            <a target="_blank" onclick="scan(); return false" style="text-decoration: none"><button>Scan</button></a>
+            <a target="_blank" onclick="email(); return false" style="text-decoration: none"><button>Mail</button></a>
         </p>
 
 
@@ -48,7 +48,7 @@
 <script type="text/javascript" src="cordova.js"></script>
 <script>
 if (typeof(Storage) === "undefined") {
-	alert('Stockage local indisponible'); 
+	    alert('Stockage local indisponible'); 
 	}
 if(localStorage.getItem("LocalData") == null)
 {
