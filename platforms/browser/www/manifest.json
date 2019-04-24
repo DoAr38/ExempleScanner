@@ -4,7 +4,7 @@
   "name": "ScannerCodeBarre",
   "short_name": "ScannerCodeBarre",
   "version": "fr.webformation.scanner",
-  "description": "Une pplication de lecture des codes barre.",
+  "description": "Une application de lecture des codes barre.",
   "author": "Dominique Colombani",
   "icons": [
     {

@@ -38,73 +38,103 @@
     <body>
 
         <p>
-            <a target="_blank" onclick="scan();return false" style="text-decoration: none"><button>Scan</button></a>
-            <a target="_blank" onclick="email();return false" style="text-decoration: none"><button>Mail</button></a>
+            <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none"><button>Entrée</button></a>
+            <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none"><button>Sortie</button></a>
+            <a target="_blank" onclick="email(); return false" style="text-decoration: none"><button>Mail</button></a>
         </p>
 
 
 
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
-<script>
-if (typeof(Storage) === "undefined") {
-	alert('Stockage local indisponible'); 
-	}
-if(localStorage.getItem("LocalData") == null)
-{
-    var data = [];
-    data = JSON.stringify(data);
-    localStorage.setItem("LocalData", data);
-}
-</script>
-<script>
-function email() {
-	var data = localStorage.getItem("LocalData");
-    data = JSON.parse(data);
-	var txt = "";
-
-    for(var count = 0; count < data.length; count++)
-    {
-		txt = txt + data[count][1] + "\n";
-    }
-    cordova.plugins.email.open({
-    from:       "application scan solti", // sending email account (iOS only)
-    to:          "info@solti.fr", // email addresses for TO field
-    cc:          "", // email addresses for CC field
-    bcc:         "", // email addresses for BCC field
-    attachments: "", // file paths or base64 data streams
-    subject:    "solti scan", // subject of the email
-    body:       txt, // email body
-    isHtml:    false  // indicats if the body is HTML or plain text (primarily iOS)
-});
-}
-</script>
-<script>function scan()
-{
-    cordova.plugins.barcodeScanner.scan(
-        function (result) {
-            if(!result.cancelled)
-            {
-				 navigator.notification.prompt("Please enter number of items",  function(input){
-                    var nombre = input.input1;
-					var name = result.format;
-					var value = 'o;' + result.text +';' + nombre;
-					var data = localStorage.getItem("LocalData");
-
-					data = JSON.parse(data);
-					data[data.length] = [name, value];
-
-					localStorage.setItem("LocalData", JSON.stringify(data));
-
-				alert(value + 'stored');
-				});
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            if (typeof (Storage) === "undefined") {
+                alert('Stockage local indisponible');
             }
-        },
-        function (error) {
-            alert("Scanning failed: " + error);
-        }
-   );
-}
-</script>
+            if (localStorage.getItem("LocalData") == null) {
+                var data = [];
+                data = JSON.stringify(data);
+                localStorage.setItem("LocalData", data);
+            }
+        </script>
+        <script>
+            function email() {
+                var data = localStorage.getItem("LocalData");
+                data = JSON.parse(data);
+                var txt = "";
+
+                for (var count = 0; count < data.length; count++) {
+                    txt = txt + data[count][1] + "\n";
+                }
+                cordova.plugins.email.open({
+                    from: "SoltiScan", // sending email account (iOS only)
+                    to: "info@solti.fr", // email addresses for TO field
+                    cc: "", // email addresses for CC field
+                    bcc: "", // email addresses for BCC field
+                    attachments: "", // file paths or base64 data streams
+                    subject: "SoltiScan", // subject of the email
+                    body: txt, // email body
+                    isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
+                });
+            }
+        </script>
+        <script>
+            function scanInput() {
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if (!result.cancelled) {
+                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                                var nombre = input.input1;
+                                var name = result.format;
+                                var value = 'I;' + result.text + ';' + nombre;
+                                var data = localStorage.getItem("LocalData");
+
+                                data = JSON.parse(data);
+                                data[data.length] = [name, value];
+
+                                localStorage.setItem("LocalData", JSON.stringify(data));
+
+                                alert(value + ' enregistrer');
+                            });
+                        }
+                        else {
+                            alert("Vous devez scanner un code-barres !");
+                        }
+                    },
+                    function (error) {
+                        alert("Erreur de scan : " + error);
+                    }
+                );
+            }
+        </script>
+        <script>
+            function scanOutput() {
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if (!result.cancelled) {
+                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                                var nombre = input.input1;
+                                var name = result.format;
+                                var value = 'O;' + result.text + ';' + nombre;
+                                var data = localStorage.getItem("LocalData");
+
+                                data = JSON.parse(data);
+                                data[data.length] = [name, value];
+
+                                localStorage.setItem("LocalData", JSON.stringify(data));
+
+                                alert(value + ' enregistrer');
+                            });
+                        }
+                        else {
+                            alert("Vous devez scanner un code-barres !");
+                        }
+                    },
+                    function (error) {
+                        alert("Erreur de scan : " + error);
+                    }
+                );
+            }
+        </script>
     </body>
 </html>

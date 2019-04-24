@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ï»¿<!DOCTYPE html>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -38,7 +38,7 @@
     <body>
 
         <p>
-            <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none"><button>Entrée</button></a>
+            <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none"><button>EntrÃ©e</button></a>
             <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none"><button>Sortie</button></a>
             <a target="_blank" onclick="email(); return false" style="text-decoration: none"><button>Mail</button></a>
         </p>
@@ -83,7 +83,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         if (!result.cancelled) {
-                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                            navigator.notification.prompt("Entrez la quantitÃ©e : ", function (input) {
                                 var nombre = input.input1;
                                 var name = result.format;
                                 var value = 'I;' + result.text + ';' + nombre;
@@ -112,7 +112,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         if (!result.cancelled) {
-                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                            navigator.notification.prompt("Entrez la quantitÃ© : ", function (input) {
                                 var nombre = input.input1;
                                 var name = result.format;
                                 var value = 'O;' + result.text + ';' + nombre;
