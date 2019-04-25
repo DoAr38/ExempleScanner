@@ -44,41 +44,37 @@
                 </a>
             </div>
             <br /><br />
-            <div class="row">
+            <div class="row" style="margin: auto;">
                 <div class="col">
+                    Input
                     <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
-                        <button class="btn btn-success" style="width: 100%;">
-                            <br />
-                            Move In
-                            <br /><br />
-                        </button>
+                        <div>
+                            <img src="img/input.png" alt="Input scanner" width="300" />
+                        </div>
                     </a>
                     <br /><br /><br />
+                    Export
                     <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
-                        <button class="btn btn-primary" style="width: 100%;">
-                            <br />
-                            Export
-                            <br /><br />
-                        </button>
+                        <div>
+                            <img src="img/export.png" alt="Output scanner" width="300" />
+                        </div>
                     </a>
                 </div>
                 <div class="col">
+                    Output
                     <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
-                        <button class="btn btn-warning" style="width: 100%;">
-                            <br />
-                            Move Out
-                            <br /><br />
-                        </button>
+                        <div>
+                            <img src="img/output.png" alt="Input scanner" width="300" />
+                        </div>
                     </a>
                     <br /><br /><br />
+                    Delete
                     <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
-                        <button class="btn btn-danger" style="width: 100%;">
-                            <br />
-                            Delete
-                            <br /><br />
-                        </button>
+                        <div>
+                            <img src="img/delete.png" alt="Input scanner" width="300" />
+                        </div>
                     </a>
-                </div>
+                </div>              
             </div>
             <br /><br />
             <div align="center">
@@ -98,15 +94,16 @@
             }
         </script>
         <script>
-    function deleteContent() {
-        if (localStorage.getItem("LocalData") == null) {
-            alert("No file to delete !");
-        } else {
-            var data = [];
-            data = JSON.stringify(data);
-            localStorage.setItem("LocalData", data);
-        }
-    };
+            function deleteContent() {
+                if (localStorage.getItem("LocalData") == null) {
+                    alert("No file to delete !");
+                } else {
+                    var data = [];
+                    data = JSON.stringify(data);
+                    localStorage.setItem("LocalData", data);
+                    alert("Data deleted successfully !");
+                }
+            };
         </script>
         <script>
             function email() {
@@ -122,7 +119,7 @@
                     }
                     cordova.plugins.email.open({
                         from: "SoltiScan", // sending email account (iOS only)
-                        to: "info@solti.fr", // email addresses for TO field
+                        to: "contact@solti-software.com", // email addresses for TO field
                         cc: "", // email addresses for CC field
                         bcc: "", // email addresses for BCC field
                         attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
@@ -138,7 +135,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         if (!result.cancelled) {
-                            navigator.notification.prompt("Entrez la quantitée : ", function (input) {
+                            navigator.notification.prompt("Enter the quantity : ", function (input) {
                                 var nombre = input.input1;
                                 var name = result.format;
                                 var value = 'I;' + result.text + ';' + nombre;
@@ -149,15 +146,15 @@
 
                                 localStorage.setItem("LocalData", JSON.stringify(data));
 
-                                alert(value + ' enregistrer');
+                                //alert(value + ' saved');
                             });
                         }
                         else {
-                            alert("Vous devez scannez un code-barres !");
+                            alert("You must scan a barcode !");
                         }
                     },
                     function (error) {
-                        alert("Erreur de scan : " + error);
+                        alert("Scan error : " + error);
                     }
                 );
             }
@@ -167,7 +164,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         if (!result.cancelled) {
-                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                            navigator.notification.prompt("Enter the quantity : ", function (input) {
                                 var nombre = input.input1;
                                 var name = result.format;
                                 var value = 'O;' + result.text + ';' + nombre;
@@ -178,15 +175,15 @@
 
                                 localStorage.setItem("LocalData", JSON.stringify(data));
 
-                                alert(value + ' enregistrer');
+                                //alert(value + ' saved');
                             });
                         }
                         else {
-                            alert("Vous devez scanner un code-barres !");
+                            alert("You must scan a barcode !");
                         }
                     },
                     function (error) {
-                        alert("Erreur de scan : " + error);
+                        alert("Scan error : " + error);
                     }
                 );
             }

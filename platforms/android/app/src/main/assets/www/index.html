@@ -98,15 +98,16 @@
             }
         </script>
         <script>
-    function deleteContent() {
-        if (localStorage.getItem("LocalData") == null) {
-            alert("No file to delete !");
-        } else {
-            var data = [];
-            data = JSON.stringify(data);
-            localStorage.setItem("LocalData", data);
-        }
-    };
+            function deleteContent() {
+                if (localStorage.getItem("LocalData") == null) {
+                    alert("No file to delete !");
+                } else {
+                    var data = [];
+                    data = JSON.stringify(data);
+                    localStorage.setItem("LocalData", data);
+                    alert("Data deleted successfully !");
+                }
+            };
         </script>
         <script>
             function email() {
@@ -122,7 +123,7 @@
                     }
                     cordova.plugins.email.open({
                         from: "SoltiScan", // sending email account (iOS only)
-                        to: "info@solti.fr", // email addresses for TO field
+                        to: "contact@solti-software.com", // email addresses for TO field
                         cc: "", // email addresses for CC field
                         bcc: "", // email addresses for BCC field
                         attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
@@ -138,7 +139,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         if (!result.cancelled) {
-                            navigator.notification.prompt("Entrez la quantitée : ", function (input) {
+                            navigator.notification.prompt("Enter the quantity : ", function (input) {
                                 var nombre = input.input1;
                                 var name = result.format;
                                 var value = 'I;' + result.text + ';' + nombre;
@@ -149,15 +150,15 @@
 
                                 localStorage.setItem("LocalData", JSON.stringify(data));
 
-                                alert(value + ' enregistrer');
+                                //alert(value + ' saved');
                             });
                         }
                         else {
-                            alert("Vous devez scannez un code-barres !");
+                            alert("You must scan a barcode !");
                         }
                     },
                     function (error) {
-                        alert("Erreur de scan : " + error);
+                        alert("Scan error : " + error);
                     }
                 );
             }
@@ -167,7 +168,7 @@
                 cordova.plugins.barcodeScanner.scan(
                     function (result) {
                         if (!result.cancelled) {
-                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                            navigator.notification.prompt("Enter the quantity : ", function (input) {
                                 var nombre = input.input1;
                                 var name = result.format;
                                 var value = 'O;' + result.text + ';' + nombre;
@@ -178,15 +179,15 @@
 
                                 localStorage.setItem("LocalData", JSON.stringify(data));
 
-                                alert(value + ' enregistrer');
+                                //alert(value + ' saved');
                             });
                         }
                         else {
-                            alert("Vous devez scanner un code-barres !");
+                            alert("You must scan a barcode !");
                         }
                     },
                     function (error) {
-                        alert("Erreur de scan : " + error);
+                        alert("Scan error : " + error);
                     }
                 );
             }
