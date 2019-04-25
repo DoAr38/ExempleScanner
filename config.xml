@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="fr.webformation.scanner" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>ScannerCodeBarre</name>
+    <name>SoltiScan</name>
     <description>
-        Une application de lecture des codes barre.
+        Barcode scanner app.
     </description>
-    <author email="dc@webformation.fr" href="http://www.webformation.fr">
-        Dominique Colombani
+    <author email="dorian.arnaud@solti.fr">
+        Dorian Arnaud
     </author>
 	<icon src="res/icone.png"></icon>
     <content src="index.html" />
