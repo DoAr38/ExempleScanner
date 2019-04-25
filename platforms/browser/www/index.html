@@ -101,6 +101,12 @@
             }
         </script>
         <script>
+    function delete() {
+        var data = "";
+        txt = data;
+    };
+        </script>
+        <script>
             function email() {
                 var data = localStorage.getItem("LocalData");
                 data = JSON.parse(data);
@@ -116,7 +122,7 @@
                     bcc: "", // email addresses for BCC field
                     attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
                     subject: "SoltiScan", // subject of the email
-                    body: txt, // email body
+                    body: "" ,//txt, // email body
                     isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
                 });
             }

@@ -71,7 +71,7 @@
                         </button>
                     </a>
                     <br /><br /><br />
-                    <a target="_blank" style="text-decoration: none;">
+                    <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
                         <button class="btn btn-danger" style="width: 100%;">
                             <br />
                             Delete
@@ -101,7 +101,7 @@
             }
         </script>
         <script>
-    function delete() {
+    function deleteContent() {
         var data = "";
         txt = data;
     };
