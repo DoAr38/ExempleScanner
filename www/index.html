@@ -36,179 +36,193 @@
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>SoltiScan</title>
 </head>
-    <body>
-        <div class="container">
-            <div align="center">
-                <a href="http://solti.fr">
-                    <img src="img/logo.png" alt="Logo Solti" />
+<body>
+    <div class="container">
+        <div align="center">
+            <a href="http://solti.fr">
+                <img src="img/logo.png" alt="Logo Solti" />
+            </a>
+        </div>
+        <br /><br />
+        <div class="row" style="margin: auto;">
+            <div class="col">
+                <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
+                    <div align="center">
+                        <b>Input</b> <br />
+                        <img src="img/input.png" alt="Input scanner" width="50%" />
+                    </div>
+                </a>
+                <br /><br /><br />
+                <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
+                    <div align="center">
+                        <b>Export</b> <br />
+                        <img src="img/export.png" alt="Output scanner" width="50%" />
+                    </div>
                 </a>
             </div>
-            <br /><br />
-            <div class="row" style="margin: auto;">
-                <div class="col">
-                    <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
-                        <div align="center">
-                            <b>Input</b> <br />
-                            <img src="img/input.png" alt="Input scanner" width="50%" />
-                        </div>
-                    </a>
-                    <br /><br /><br />
-                    <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
-                        <div align="center">
-                            <b>Export</b> <br />
-                            <img src="img/export.png" alt="Output scanner" width="50%" />
-                        </div>
-                    </a>
-                </div>
-                <div class="col">
-                    <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">                     
-                        <div align="center">
-                            <b>Output</b> <br />
-                            <img src="img/output.png" alt="Input scanner" width="50%" />
-                        </div>
-                    </a>
-                    <br /><br /><br />                 
-                    <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
-                        <div align="center">
-                            <b>Delete</b> <br />
-                            <img src="img/delete.png" alt="Input scanner" width="50%" />
-                        </div>
-                    </a>
-                </div>              
-            </div>
-            <br /><br />
-            <div align="center">
-                SoltiScan v 1.0
-            </div> 
-            <br />
-            <br />
-            <br />
-            <div class="row">
-                <div class="col">
-                        <a target="_blank" style="text-decoration: none;">
-                            <button class="btn btn-primary">Help</button>
-                        </a>
-                </div>
-                <div class="col">
+            <div class="col">
+                <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
                     <div align="center">
-                        <img src="img/sim.png" alt="Simple Inventory Manager" width="30%" />
+                        <b>Output</b> <br />
+                        <img src="img/output.png" alt="Input scanner" width="50%" />
                     </div>
-                </div>
-                <div class="col">
-                    <a target="_blank" style="text-decoration: none;">
-                        <div align="center">
-                            <img src="img/param.png" alt="Input scanner" width="30%" />
-                        </div>
-                    </a>
-                </div>
+                </a>
+                <br /><br /><br />
+                <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
+                    <div align="center">
+                        <b>Delete</b> <br />
+                        <img src="img/delete.png" alt="Input scanner" width="50%" />
+                    </div>
+                </a>
             </div>
         </div>
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-        <script type="text/javascript" src="cordova.js"></script>
-        <script>
-            if (typeof (Storage) === "undefined") {
-                alert('Stockage local indisponible');
-            }
+        <br /><br />
+        <div align="center">
+            SoltiScan v 1.0
+        </div>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            <div class="col">
+                <a target="_blank" style="text-decoration: none;">
+                    <button class="btn btn-primary">Help</button>
+                </a>
+            </div>
+            <div class="col">
+                <div align="center">
+                    <img src="img/sim.png" alt="Simple Inventory Manager" width="30%" />
+                </div>
+            </div>
+            <div class="col">
+                <a target="_blank" style="text-decoration: none;">
+                    <div align="center">
+                        <img src="img/param.png" alt="Input scanner" width="30%" />
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script>
+        if (typeof (Storage) === "undefined") {
+            alert('Stockage local indisponible');
+        }
+        if (localStorage.getItem("LocalData") == null) {
+            var data = [];
+            data = JSON.stringify(data);
+            localStorage.setItem("LocalData", data);
+        }
+        if (localStorage.getItem("Email") == null || localStorage.getItem("Email") == '')
+            localStorage.setItem("Email", 'info@solti.fr');
+    }
+    </script>
+    <script>
+        function deleteContent() {
             if (localStorage.getItem("LocalData") == null) {
+                alert("No file to delete !");
+            } else {
                 var data = [];
                 data = JSON.stringify(data);
                 localStorage.setItem("LocalData", data);
+                alert("Data deleted successfully !");
             }
-        </script>
-        <script>
-            function deleteContent() {
-                if (localStorage.getItem("LocalData") == null) {
-                    alert("No file to delete !");
-                } else {
-                    var data = [];
-                    data = JSON.stringify(data);
-                    localStorage.setItem("LocalData", data);
-                    alert("Data deleted successfully !");
+        };
+    </script>
+    <script>
+        function email() {
+            var data = localStorage.getItem("LocalData");
+            if (data === null) {
+                alert("No file to export !");
+            } else {
+                data = JSON.parse(data);
+                var txt = "";
+
+                for (var count = 0; count < data.length; count++) {
+                    txt = txt + data[count][1] + "\n";
                 }
-            };
-        </script>
-        <script>
-            function email() {
-                var data = localStorage.getItem("LocalData");
-                if (data === null) {
-                    alert("No file to export !");
-                } else {
-                    data = JSON.parse(data);
-                    var txt = "";
+                cordova.plugins.email.open({
+                    from: "SoltiScan", // sending email account (iOS only)
+                    to: localStorage.getItem("Email"), //"contact@solti-software.com", // email addresses for TO field
+                    cc: "", // email addresses for CC field
+                    bcc: "", // email addresses for BCC field
+                    attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
+                    subject: "SoltiScan", // subject of the email
+                    body: "",//txt, // email body
+                    isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
+                });
+            }
+        }
+    </script>
+    <script>
+        function scanInput() {
+            cordova.plugins.barcodeScanner.scan(
+                function (result) {
+                    if (!result.cancelled) {
+                        navigator.notification.prompt("Enter the quantity : ", function (input) {
+                            var nombre = input.input1;
+                            var name = result.format;
+                            var value = 'I;' + result.text + ';' + nombre;
+                            var data = localStorage.getItem("LocalData");
 
-                    for (var count = 0; count < data.length; count++) {
-                        txt = txt + data[count][1] + "\n";
+                            data = JSON.parse(data);
+                            data[data.length] = [name, value];
+
+                            localStorage.setItem("LocalData", JSON.stringify(data));
+
+                            //alert(value + ' saved');
+                        });
                     }
-                    cordova.plugins.email.open({
-                        from: "SoltiScan", // sending email account (iOS only)
-                        to: "contact@solti-software.com", // email addresses for TO field
-                        cc: "", // email addresses for CC field
-                        bcc: "", // email addresses for BCC field
-                        attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
-                        subject: "SoltiScan", // subject of the email
-                        body: "" ,//txt, // email body
-                        isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
-                    });
+                    else {
+                        alert("You must scan a barcode !");
+                    }
+                },
+                function (error) {
+                    alert("Scan error : " + error);
                 }
-            }
-        </script>
-        <script>
-            function scanInput() {
-                cordova.plugins.barcodeScanner.scan(
-                    function (result) {
-                        if (!result.cancelled) {
-                            navigator.notification.prompt("Enter the quantity : ", function (input) {
-                                var nombre = input.input1;
-                                var name = result.format;
-                                var value = 'I;' + result.text + ';' + nombre;
-                                var data = localStorage.getItem("LocalData");
+            );
+        }
+    </script>
+    <script>
+        function scanOutput() {
+            cordova.plugins.barcodeScanner.scan(
+                function (result) {
+                    if (!result.cancelled) {
+                        navigator.notification.prompt("Enter the quantity : ", function (input) {
+                            var nombre = input.input1;
+                            var name = result.format;
+                            var value = 'O;' + result.text + ';' + nombre;
+                            var data = localStorage.getItem("LocalData");
 
-                                data = JSON.parse(data);
-                                data[data.length] = [name, value];
+                            data = JSON.parse(data);
+                            data[data.length] = [name, value];
 
-                                localStorage.setItem("LocalData", JSON.stringify(data));
+                            localStorage.setItem("LocalData", JSON.stringify(data));
 
-                                //alert(value + ' saved');
-                            });
-                        }
-                        else {
-                            alert("You must scan a barcode !");
-                        }
-                    },
-                    function (error) {
-                        alert("Scan error : " + error);
+                            //alert(value + ' saved');
+                        });
                     }
-                );
-            }
-        </script>
-        <script>
-            function scanOutput() {
-                cordova.plugins.barcodeScanner.scan(
-                    function (result) {
-                        if (!result.cancelled) {
-                            navigator.notification.prompt("Enter the quantity : ", function (input) {
-                                var nombre = input.input1;
-                                var name = result.format;
-                                var value = 'O;' + result.text + ';' + nombre;
-                                var data = localStorage.getItem("LocalData");
-
-                                data = JSON.parse(data);
-                                data[data.length] = [name, value];
-
-                                localStorage.setItem("LocalData", JSON.stringify(data));
-
-                                //alert(value + ' saved');
-                            });
-                        }
-                        else {
-                            alert("You must scan a barcode !");
-                        }
-                    },
-                    function (error) {
-                        alert("Scan error : " + error);
+                    else {
+                        alert("You must scan a barcode !");
                     }
-                );
-            }
-        </script>
-    </body>
+                },
+                function (error) {
+                    alert("Scan error : " + error);
+                }
+            );
+        }
+    </script>
+    <script>
+        function settings() {
+            navigator.notification.prompt("Email", function (input) {
+                var email = input.input1;
+                if (input.buttonIndex != 1) return;
+                localStorage.setItem("Email", email);
+            }, '', '', localStorage.getItem("Email"));
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
 </html>
