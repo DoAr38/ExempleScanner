@@ -1,11 +1,11 @@
 {
   "background_color": "#FFF",
   "display": "standalone",
-  "name": "ScannerCodeBarre",
-  "short_name": "ScannerCodeBarre",
+  "name": "SoltiScan",
+  "short_name": "SoltiScan",
   "version": "fr.webformation.scanner",
-  "description": "Une application de lecture des codes barre.",
-  "author": "Dominique Colombani",
+  "description": "Barcode scanner app.",
+  "author": "Dorian Arnaud",
   "icons": [
     {
       "src": "res/icone.png",

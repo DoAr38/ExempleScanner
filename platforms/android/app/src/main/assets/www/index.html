@@ -85,9 +85,6 @@
                 SoltiScan v 1.0
             </div> 
         </div>
-
-
-
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="cordova.js"></script>
         <script>
@@ -102,30 +99,38 @@
         </script>
         <script>
     function deleteContent() {
-        var data = [];
-        data = JSON.stringify(data);
-        localStorage.setItem("LocalData", data);
+        if (localStorage.getItem("LocalData") == null) {
+            alert("No file to delete !");
+        } else {
+            var data = [];
+            data = JSON.stringify(data);
+            localStorage.setItem("LocalData", data);
+        }
     };
         </script>
         <script>
             function email() {
                 var data = localStorage.getItem("LocalData");
-                data = JSON.parse(data);
-                var txt = "";
+                if (data === null) {
+                    alert("No file to export !");
+                } else {
+                    data = JSON.parse(data);
+                    var txt = "";
 
-                for (var count = 0; count < data.length; count++) {
-                    txt = txt + data[count][1] + "\n";
+                    for (var count = 0; count < data.length; count++) {
+                        txt = txt + data[count][1] + "\n";
+                    }
+                    cordova.plugins.email.open({
+                        from: "SoltiScan", // sending email account (iOS only)
+                        to: "info@solti.fr", // email addresses for TO field
+                        cc: "", // email addresses for CC field
+                        bcc: "", // email addresses for BCC field
+                        attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
+                        subject: "SoltiScan", // subject of the email
+                        body: "" ,//txt, // email body
+                        isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
+                    });
                 }
-                cordova.plugins.email.open({
-                    from: "SoltiScan", // sending email account (iOS only)
-                    to: "info@solti.fr", // email addresses for TO field
-                    cc: "", // email addresses for CC field
-                    bcc: "", // email addresses for BCC field
-                    attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
-                    subject: "SoltiScan", // subject of the email
-                    body: "" ,//txt, // email body
-                    isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
-                });
             }
         </script>
         <script>
