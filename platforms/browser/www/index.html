@@ -39,22 +39,49 @@
     <body>
         <div class="container">
             <div align="center">
-                <img src="img/logo.png" alt="Logo Solti" />
+                <a href="http://solti.fr">
+                    <img src="img/logo.png" alt="Logo Solti" />
+                </a>
             </div>
             <br /><br />
             <div class="row">
                 <div class="col">
-                    <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;"><button class="btn btn-success" style="width: 100%;">Entrée</button></a>
-                    <br /><br />
-                    <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;"><button class="btn btn-warning" style="width: 100%;">Sortie</button></a>
+                    <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
+                        <button class="btn btn-success" style="width: 100%;">
+                            <br />
+                            Move In
+                            <br />
+                        </button>
+                    </a>
+                    <br /><br /><br />
+                    <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
+                        <button class="btn btn-warning" style="width: 100%;">
+                            <br />
+                            Move Out
+                            <br />
+                        </button>
+                    </a>
                 </div>
                 <div class="col">
-                    <a target="_blank" onclick="email(); return false" style="text-decoration: none;"><button class="btn btn-primary" style="width: 100%;">Exporter</button></a>
-                    <br /><br />
-                    <a target="_blank" style="text-decoration: none;"><button class="btn btn-danger" style="width: 100%;">Supprimer</button></a>
+                    <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
+                        <button class="btn btn-primary" style="width: 100%;">
+                            <br />
+                            Export
+                            <br />
+                        </button>
+                    </a>
+                    <br /><br /><br />
+                    <a target="_blank" style="text-decoration: none;">
+                        <button class="btn btn-danger" style="width: 100%;">
+                            <br />
+                            Delete
+                            <br />
+                        </button>
+                    </a>
                 </div>
             </div>
             <br /><br />
+            SoltiScan v 1.0
         </div>
 
 
@@ -85,7 +112,7 @@
                     to: "info@solti.fr", // email addresses for TO field
                     cc: "", // email addresses for CC field
                     bcc: "", // email addresses for BCC field
-                    attachments: "", // file paths or base64 data streams
+                    attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
                     subject: "SoltiScan", // subject of the email
                     body: txt, // email body
                     isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
