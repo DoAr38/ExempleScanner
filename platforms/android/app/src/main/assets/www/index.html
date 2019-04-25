@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <!--
     Licensed to the Apache Software Foundation (ASF) under one
     or more contributor license agreements.  See the NOTICE file
@@ -18,93 +18,173 @@
     under the License.
 -->
 <html>
-    <head>
-        <!--
-        Customize this policy to fit your own app's needs. For more guidance, see:
-            https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-        Some notes:
-            * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-            * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-            * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-                * Enable inline JS: add 'unsafe-inline' to default-src
-        -->
-        <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' *.jquery.com data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Scan Code Barre</title>
-    </head>
+<head>
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' *.jquery.com data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">-->
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <title>SoltiScan</title>
+</head>
     <body>
+        <div class="container">
+            <div align="center">
+                <a href="http://solti.fr">
+                    <img src="img/logo.png" alt="Logo Solti" />
+                </a>
+            </div>
+            <br /><br />
+            <div class="row">
+                <div class="col">
+                    <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
+                        <button class="btn btn-success" style="width: 100%;">
+                            <br />
+                            Move In
+                            <br /><br />
+                        </button>
+                    </a>
+                    <br /><br /><br />
+                    <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
+                        <button class="btn btn-primary" style="width: 100%;">
+                            <br />
+                            Export
+                            <br /><br />
+                        </button>
+                    </a>
+                </div>
+                <div class="col">
+                    <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
+                        <button class="btn btn-warning" style="width: 100%;">
+                            <br />
+                            Move Out
+                            <br /><br />
+                        </button>
+                    </a>
+                    <br /><br /><br />
+                    <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
+                        <button class="btn btn-danger" style="width: 100%;">
+                            <br />
+                            Delete
+                            <br /><br />
+                        </button>
+                    </a>
+                </div>
+            </div>
+            <br /><br />
+            <div align="center">
+                SoltiScan v 1.0
+            </div> 
+        </div>
 
-        <p>
-            <a target="_blank" onclick="scan();return false" style="text-decoration: none"><button>Scan</button></a>
-            <a target="_blank" onclick="email();return false" style="text-decoration: none"><button>Mail</button></a>
-        </p>
 
 
-
-<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-<script type="text/javascript" src="cordova.js"></script>
-<script>
-if (typeof(Storage) === "undefined") {
-	alert('Stockage local indisponible'); 
-	}
-if(localStorage.getItem("LocalData") == null)
-{
-    var data = [];
-    data = JSON.stringify(data);
-    localStorage.setItem("LocalData", data);
-}
-</script>
-<script>
-function email() {
-	var data = localStorage.getItem("LocalData");
-    data = JSON.parse(data);
-	var txt = "";
-
-    for(var count = 0; count < data.length; count++)
-    {
-		txt = txt + data[count][1] + "\n";
-    }
-    cordova.plugins.email.open({
-    from:       "application scan solti", // sending email account (iOS only)
-    to:          "info@solti.fr", // email addresses for TO field
-    cc:          "", // email addresses for CC field
-    bcc:         "", // email addresses for BCC field
-    attachments: "", // file paths or base64 data streams
-    subject:    "solti scan", // subject of the email
-    body:       txt, // email body
-    isHtml:    false  // indicats if the body is HTML or plain text (primarily iOS)
-});
-}
-</script>
-<script>function scan()
-{
-    cordova.plugins.barcodeScanner.scan(
-        function (result) {
-            if(!result.cancelled)
-            {
-				 navigator.notification.prompt("Please enter number of items",  function(input){
-                    var nombre = input.input1;
-					var name = result.format;
-					var value = 'o;' + result.text +';' + nombre;
-					var data = localStorage.getItem("LocalData");
-
-					data = JSON.parse(data);
-					data[data.length] = [name, value];
-
-					localStorage.setItem("LocalData", JSON.stringify(data));
-
-				alert(value + 'stored');
-				});
+        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="cordova.js"></script>
+        <script>
+            if (typeof (Storage) === "undefined") {
+                alert('Stockage local indisponible');
             }
-        },
-        function (error) {
-            alert("Scanning failed: " + error);
-        }
-   );
-}
-</script>
+            if (localStorage.getItem("LocalData") == null) {
+                var data = [];
+                data = JSON.stringify(data);
+                localStorage.setItem("LocalData", data);
+            }
+        </script>
+        <script>
+    function deleteContent() {
+        var data = [];
+        data = JSON.stringify(data);
+        localStorage.setItem("LocalData", data);
+    };
+        </script>
+        <script>
+            function email() {
+                var data = localStorage.getItem("LocalData");
+                data = JSON.parse(data);
+                var txt = "";
+
+                for (var count = 0; count < data.length; count++) {
+                    txt = txt + data[count][1] + "\n";
+                }
+                cordova.plugins.email.open({
+                    from: "SoltiScan", // sending email account (iOS only)
+                    to: "info@solti.fr", // email addresses for TO field
+                    cc: "", // email addresses for CC field
+                    bcc: "", // email addresses for BCC field
+                    attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
+                    subject: "SoltiScan", // subject of the email
+                    body: "" ,//txt, // email body
+                    isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
+                });
+            }
+        </script>
+        <script>
+            function scanInput() {
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if (!result.cancelled) {
+                            navigator.notification.prompt("Entrez la quantitée : ", function (input) {
+                                var nombre = input.input1;
+                                var name = result.format;
+                                var value = 'I;' + result.text + ';' + nombre;
+                                var data = localStorage.getItem("LocalData");
+
+                                data = JSON.parse(data);
+                                data[data.length] = [name, value];
+
+                                localStorage.setItem("LocalData", JSON.stringify(data));
+
+                                alert(value + ' enregistrer');
+                            });
+                        }
+                        else {
+                            alert("Vous devez scannez un code-barres !");
+                        }
+                    },
+                    function (error) {
+                        alert("Erreur de scan : " + error);
+                    }
+                );
+            }
+        </script>
+        <script>
+            function scanOutput() {
+                cordova.plugins.barcodeScanner.scan(
+                    function (result) {
+                        if (!result.cancelled) {
+                            navigator.notification.prompt("Entrez la quantité : ", function (input) {
+                                var nombre = input.input1;
+                                var name = result.format;
+                                var value = 'O;' + result.text + ';' + nombre;
+                                var data = localStorage.getItem("LocalData");
+
+                                data = JSON.parse(data);
+                                data[data.length] = [name, value];
+
+                                localStorage.setItem("LocalData", JSON.stringify(data));
+
+                                alert(value + ' enregistrer');
+                            });
+                        }
+                        else {
+                            alert("Vous devez scanner un code-barres !");
+                        }
+                    },
+                    function (error) {
+                        alert("Erreur de scan : " + error);
+                    }
+                );
+            }
+        </script>
     </body>
 </html>
