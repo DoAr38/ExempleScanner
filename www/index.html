@@ -38,11 +38,6 @@
 </head>
 <body>
     <div class="container">
-        <div align="center">
-            <a href="http://solti.fr">
-                <img src="img/logo.png" alt="Logo Solti" />
-            </a>
-        </div>
         <br /><br />
         <div class="row" style="margin: auto;">
             <div class="col">
@@ -86,12 +81,14 @@
         <div class="row">
             <div class="col">
                 <a target="_blank" style="text-decoration: none;">
-                    <button class="btn btn-primary">Help</button>
+                    <img src="img/help.png" alt="Simple Inventory Manager" width="30%" />
                 </a>
             </div>
             <div class="col">
                 <div align="center">
-                    <img src="img/sim.png" alt="Simple Inventory Manager" width="30%" />
+                    <a href="http://solti.fr">
+                        <img src="img/sim.png" alt="Simple Inventory Manager" width="30%" />
+                    </a>
                 </div>
             </div>
             <div class="col">
@@ -115,44 +112,36 @@
             localStorage.setItem("LocalData", data);
         }
         if (localStorage.getItem("Email") == null || localStorage.getItem("Email") == '')
-            localStorage.setItem("Email", 'info@solti.fr');
+            localStorage.setItem("Email", 'contact@solti-software.com');
     }
     </script>
     <script>
         function deleteContent() {
-            if (localStorage.getItem("LocalData") == null) {
-                alert("No file to delete !");
-            } else {
-                var data = [];
-                data = JSON.stringify(data);
-                localStorage.setItem("LocalData", data);
-                alert("Data deleted successfully !");
-            }
+            var data = [];
+            data = JSON.stringify(data);
+            localStorage.setItem("LocalData", data);
+            alert("Data deleted successfully !");
         };
     </script>
     <script>
         function email() {
             var data = localStorage.getItem("LocalData");
-            if (data === null) {
-                alert("No file to export !");
-            } else {
-                data = JSON.parse(data);
-                var txt = "";
+            data = JSON.parse(data);
+            var txt = "";
 
-                for (var count = 0; count < data.length; count++) {
-                    txt = txt + data[count][1] + "\n";
-                }
-                cordova.plugins.email.open({
-                    from: "SoltiScan", // sending email account (iOS only)
-                    to: localStorage.getItem("Email"), //"contact@solti-software.com", // email addresses for TO field
-                    cc: "", // email addresses for CC field
-                    bcc: "", // email addresses for BCC field
-                    attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
-                    subject: "SoltiScan", // subject of the email
-                    body: "",//txt, // email body
-                    isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
-                });
+            for (var count = 0; count < data.length; count++) {
+                txt = txt + data[count][1] + "\n";
             }
+            cordova.plugins.email.open({
+                from: "SoltiScan", // sending email account (iOS only)
+                to: localStorage.getItem("Email"), //"contact@solti-software.com", // email addresses for TO field
+                cc: "", // email addresses for CC field
+                bcc: "", // email addresses for BCC field
+                attachments: ['base64:Scan.txt//' + btoa(txt)], // file paths or base64 data streams
+                subject: "SoltiScan", // subject of the email
+                body: "",//txt, // email body
+                isHtml: false  // indicats if the body is HTML or plain text (primarily iOS)
+            });
         }
     </script>
     <script>
