@@ -8,6 +8,8 @@
         Dorian Arnaud
     </author>
     <content src="index.html" />
+	<icon src="res/icone.png" platform="ios"></icon>
+<icon src="res/icone.png" width="1024" height="1024" platform="ios" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
 	<plugin name="phonegap-plugin-barcodescanner" />
 	<plugin name="cordova-plugin-dialogs" />
