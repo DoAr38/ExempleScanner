@@ -23,7 +23,6 @@
     <author email="dorian.arnaud@solti.fr">
         Dorian Arnaud
     </author>
-    <icon src="res/icone.png" />
     <content src="index.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
