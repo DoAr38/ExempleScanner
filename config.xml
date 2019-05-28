@@ -13,13 +13,13 @@
 
     <content src="index.html" />
 
-    <icon src="res/icone.png" platform="android" />
+<icon src="res/icone.png"/>
 
-    <plugin name="cordova-plugin-whitelist" spec="1" />
-    <plugin name="phonegap-plugin-barcodescanner" />
-    <plugin name="cordova-plugin-dialogs" />
-    <plugin name="cordova-plugin-inappbrowser" />
-    <plugin name="cordova-plugin-email-composer" />
+<plugin name="cordova-plugin-whitelist" spec="1" />
+<plugin name="phonegap-plugin-barcodescanner" />
+<plugin name="cordova-plugin-dialogs" />
+<plugin name="cordova-plugin-inappbrowser" />
+<plugin name="cordova-plugin-email-composer" />
 
     <access origin="*" />
 
