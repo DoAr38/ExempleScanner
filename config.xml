@@ -13,15 +13,10 @@
 
     <content src="index.html" />
 
-<platform name="ios">
-  <icon src="res/iconIOS76.png" width="76" height="76">
-  <icon src="res/iconIOS120.png" width="120" height="120">
-  <icon src="res/iconIOS152.png" width="152" height="152">
-</platform>
-
-<platform name="android">
-  <icon src="res/icone.png" width="340" height="340">
-</platform>
+  <icon src="res/icone.png" platform="android">
+  <icon src="res/iconIOS76.png" width="76" height="76" platform="ios">
+  <icon src="res/iconIOS120.png" width="120" height="120" platform="ios">
+  <icon src="res/iconIOS152.png" width="152" height="152" platform="ios">  
 
 <plugin name="cordova-plugin-whitelist" spec="1" />
 <plugin name="phonegap-plugin-barcodescanner" />
