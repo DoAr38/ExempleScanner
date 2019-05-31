@@ -21,7 +21,10 @@
   <icon src="res/iconIOS1024.png" width="1024" height="1024" platform="ios" />
 
 <plugin name="cordova-plugin-whitelist" spec="1" />
-<plugin name="phonegap-plugin-barcodescanner" />
+<plugin name="phonegap-plugin-barcodescanner">
+  <variable name="CAMERA_USAGE_DESCRIPTION" value="SoltiScan need to access your's camera to take picture" />
+  <variable name="PHOTOLIBRARY_USAGE_DESCRIPTION" value="SoltiScan need to access your's camera to take picture" />
+</plugin>
 <plugin name="cordova-plugin-dialogs" />
 <plugin name="cordova-plugin-inappbrowser" />
 <plugin name="cordova-plugin-email-composer" />
@@ -42,6 +45,10 @@
     <platform name="ios">
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />
+
+        <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
+          <string>SoltiScan need to access your's camera to take picture</string>
+        </edit-config>
     </platform>
 
     <preference name="phonegap-version" value="cli-8.1.1" />
