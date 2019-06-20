@@ -3,9 +3,40 @@
   "display": "standalone",
   "name": "SoltiScan",
   "short_name": "SoltiScan",
-  "version": "fr.webformation.scanner",
+  "version": "com.solti.iossoltiscan",
   "description": "Barcode scanner app.",
   "author": "Dorian Arnaud",
-  "icons": [],
+  "icons": [
+    {
+      "src": "res/icone.png",
+      "type": "image/png",
+      "sizes": "undefinedxundefined"
+    },
+    {
+      "src": "res/iconIOS40.png",
+      "type": "image/png",
+      "sizes": "40x40"
+    },
+    {
+      "src": "res/iconIOS76.png",
+      "type": "image/png",
+      "sizes": "76x76"
+    },
+    {
+      "src": "res/iconIOS120.png",
+      "type": "image/png",
+      "sizes": "120x120"
+    },
+    {
+      "src": "res/iconIOS152.png",
+      "type": "image/png",
+      "sizes": "152x152"
+    },
+    {
+      "src": "res/iconIOS1024.png",
+      "type": "image/png",
+      "sizes": "1024x1024"
+    }
+  ],
   "start_url": "index.html"
 }

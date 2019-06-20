@@ -73,14 +73,14 @@
         </div>
         <br /><br />
         <div align="center">
-            SoltiScan v 1.0
+            SoltiScan v 1.1
         </div>
         <br />
         <br />
         <br />
         <div class="row">
             <div class="col">
-                <a target="_blank" style="text-decoration: none;">
+                <a target="_blank" style="text-decoration: none;" onclick="showInfo();">
                     <img src="img/help.png" alt="Simple Inventory Manager" width="50%" />
                 </a>
             </div>
@@ -111,10 +111,11 @@
             data = JSON.stringify(data);
             localStorage.setItem("LocalData", data);
         }
-        if (localStorage.getItem("Email") == null || localStorage.getItem("Email") == '')
+        if (localStorage.getItem("Email") == null || localStorage.getItem("Email") == ''){
             localStorage.setItem("Email", 'contact@solti-software.com');
-    }
+        }
     </script>
+    <!-- SUPRESSION DONNEES -->
     <script>
         function deleteContent() {
             var data = [];
@@ -123,6 +124,8 @@
             alert("Data deleted successfully !");
         };
     </script>
+    <!-- FIN SUPRESSION DONNEES -->
+    <!-- ENVOIE MAIL -->
     <script>
         function email() {
             var data = localStorage.getItem("LocalData");
@@ -144,6 +147,8 @@
             });
         }
     </script>
+    <!-- FIN ENVOIE MAIL -->
+    <!-- SCAN ENTREE -->
     <script>
         function scanInput() {
             cordova.plugins.barcodeScanner.scan(
@@ -173,6 +178,8 @@
             );
         }
     </script>
+    <!-- FIN SCAN ENTREE -->
+    <!-- SCAN SORTIE -->
     <script>
         function scanOutput() {
             cordova.plugins.barcodeScanner.scan(
@@ -202,6 +209,8 @@
             );
         }
     </script>
+    <!-- FIN SCAN SORTIE -->
+    <!-- MODIF EMAIL DEST -->
     <script>
         function settings() {
             navigator.notification.prompt("Email", function (input) {
@@ -211,6 +220,18 @@
             }, '', '', localStorage.getItem("Email"));
         }
     </script>
+    <!-- FIN MODIF EMAIL DEST -->
+    <!-- INFORMATIONS -->
+    <script>
+      function showInfo(){
+        alert("The + (INPUT) button allows you to scan the data you need to enter into the database, the quantity is to be entered !");
+        alert("The - (OUTPUT) button allows you to scan the data you need to remove from the database, the quantity is to be entered !");
+        alert("The Mail button (EXPORT) allows you to send the data to the PC software (SIM) !");
+        alert("The Delete button (DELETE) allows you to delete scanned data !")
+        alert("The Settings button allows you to change the destination email address !");
+      }
+    </script>
+    <!-- FIN INFORMATIONS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </body>

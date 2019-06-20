@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="fr.webformation.scanner" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.solti.iossoltiscan" version="1.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>SoltiScan</name>
     <description>
         Barcode scanner app.
@@ -8,6 +8,12 @@
         Dorian Arnaud
     </author>
     <content src="index.html" />
+    <icon platform="android" src="res/icone.png" />
+    <icon height="40" platform="ios" src="res/iconIOS40.png" width="40" />
+    <icon height="76" platform="ios" src="res/iconIOS76.png" width="76" />
+    <icon height="120" platform="ios" src="res/iconIOS120.png" width="120" />
+    <icon height="152" platform="ios" src="res/iconIOS152.png" width="152" />
+    <icon height="1024" platform="ios" src="res/iconIOS1024.png" width="1024" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
