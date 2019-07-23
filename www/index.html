@@ -37,47 +37,54 @@
     <title>SoltiScan</title>
 </head>
 <body>
-    <div class="container">
-        <br /><br />
-        <div class="row" style="margin: auto;">
-            <div class="col">
-                <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Input</b> <br />
-                        <img src="img/input.png" alt="Input scanner" width="50%" />
-                    </div>
-                </a>
-                <br /><br /><br />
-                <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Export</b> <br />
-                        <img src="img/export.png" alt="Output scanner" width="50%" />
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Output</b> <br />
-                        <img src="img/output.png" alt="Input scanner" width="50%" />
-                    </div>
-                </a>
-                <br /><br /><br />
-                <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Delete</b> <br />
-                        <img src="img/delete.png" alt="Input scanner" width="50%" />
-                    </div>
-                </a>
-            </div>
+  <div align="center">
+      SoltiScan v 1.2
+      <!-- SoltiScan v 1.1 -->
+      <!-- SoltiScan v 1.0 -->
+  </div>
+    <br /><br />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;" class="container-fluid">
+              <div align="center">
+                  <h1>Input</h1>
+                  <img src="img/input.png" alt="Input scanner" width="50%"/>
+              </div>
+          </a>
         </div>
-        <br /><br />
-        <div align="center">
-            SoltiScan v 1.1
+        <div class="col">
+          <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
+              <div align="center">
+                  <h1>Output</h1>
+                  <img src="img/output.png" alt="Input scanner" width="50%" />
+              </div>
+          </a>
         </div>
-        <br />
-        <br />
-        <br />
+      </div>
+      <div class="row">
+        <div class="col">
+          <a target="_blank" onclick="email(); return false" style="text-decoration: none;" class="container-fluid">
+              <div align="center">
+                  <h1>Export</h1>
+                  <img src="img/export.png" alt="Output scanner" width="50%" />
+              </div>
+          </a>
+        </div>
+        <div class="col">
+          <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
+              <div align="center">
+                  <h1>Delete</h1>
+                  <img src="img/delete.png" alt="Input scanner" width="50%" />
+              </div>
+          </a>
+        </div>
+      </div>
+      <div align="center">
+        <div class="btn btn-dark">
+          <a href="https://logiciel-gestion-stock.fr" style="color: white; text-decoration: none;">Click here to visit our website and get more information</a>
+        </div>
+      </div>
         <div class="row">
             <div class="col">
                 <a target="_blank" style="text-decoration: none;" onclick="showInfo();">
