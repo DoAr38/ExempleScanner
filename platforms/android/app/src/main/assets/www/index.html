@@ -32,52 +32,59 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="msapplication-tap-highlight" content="no">
     <!--<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">-->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <title>SoltiScan</title>
 </head>
 <body>
-    <div class="container">
-        <br /><br />
-        <div class="row" style="margin: auto;">
-            <div class="col">
-                <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Input</b> <br />
-                        <img src="img/input.png" alt="Input scanner" width="50%" />
-                    </div>
-                </a>
-                <br /><br /><br />
-                <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Export</b> <br />
-                        <img src="img/export.png" alt="Output scanner" width="50%" />
-                    </div>
-                </a>
-            </div>
-            <div class="col">
-                <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Output</b> <br />
-                        <img src="img/output.png" alt="Input scanner" width="50%" />
-                    </div>
-                </a>
-                <br /><br /><br />
-                <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
-                    <div align="center">
-                        <b>Delete</b> <br />
-                        <img src="img/delete.png" alt="Input scanner" width="50%" />
-                    </div>
-                </a>
-            </div>
+  <div align="center">
+      SoltiScan v 1.2
+      <!-- SoltiScan v 1.1 -->
+      <!-- SoltiScan v 1.0 -->
+  </div>
+    <br /><br />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col">
+          <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;" class="container-fluid">
+              <div align="center">
+                  <h1>Input</h1>
+                  <img src="img/input.png" alt="Input scanner" width="50%"/>
+              </div>
+          </a>
         </div>
-        <br /><br />
-        <div align="center">
-            SoltiScan v 1.1
+        <div class="col">
+          <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
+              <div align="center">
+                  <h1>Output</h1>
+                  <img src="img/output.png" alt="Input scanner" width="50%" />
+              </div>
+          </a>
         </div>
-        <br />
-        <br />
-        <br />
+      </div>
+      <div class="row">
+        <div class="col">
+          <a target="_blank" onclick="email(); return false" style="text-decoration: none;" class="container-fluid">
+              <div align="center">
+                  <h1>Export</h1>
+                  <img src="img/export.png" alt="Output scanner" width="50%" />
+              </div>
+          </a>
+        </div>
+        <div class="col">
+          <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
+              <div align="center">
+                  <h1>Delete</h1>
+                  <img src="img/delete.png" alt="Input scanner" width="50%" />
+              </div>
+          </a>
+        </div>
+      </div>
+      <div align="center">
+        <div class="btn btn-dark">
+          <a href="https://logiciel-gestion-stock.fr" style="color: white; text-decoration: none;">Click here to visit our website and get more information</a>
+        </div>
+      </div>
         <div class="row">
             <div class="col">
                 <a target="_blank" style="text-decoration: none;" onclick="showInfo();">
@@ -224,11 +231,11 @@
     <!-- INFORMATIONS -->
     <script>
       function showInfo(){
-        alert("The + (INPUT) button allows you to scan the data you need to enter into the database, the quantity is to be entered !");
-        alert("The - (OUTPUT) button allows you to scan the data you need to remove from the database, the quantity is to be entered !");
-        alert("The Mail button (EXPORT) allows you to send the data to the PC software (SIM) !");
-        alert("The Delete button (DELETE) allows you to delete scanned data !")
-        alert("The Settings button allows you to change the destination email address !");
+        alert("The + (INPUT) button scans the incomming barcodes and store them localy");
+        alert("The - (OUTPUT) button scans the outgoing barcodes and store them localy");
+        alert("The Mail button (EXPORT) sends the data to the PC software (SIM) !");
+        alert("The Delete button (DELETE) deletes all scanned barcodes !")
+        alert("The Settings button changes the destination email address !");
       }
     </script>
     <!-- FIN INFORMATIONS -->
