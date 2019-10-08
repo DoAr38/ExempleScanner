@@ -37,22 +37,25 @@
     <title>SoltiScan</title>
 </head>
 <body>
+  <br>
   <div align="center">
-      SoltiScan v 1.2
-      <!-- SoltiScan v 1.1 -->
-      <!-- SoltiScan v 1.0 -->
+           SoltiScan v 1.3
+      <!-- SoltiScan v 1.2 - MAJ DESIGN -->
+      <!-- SoltiScan v 1.1 - CORRECTION BUGS -->
+      <!-- SoltiScan v 1.0 - LANCEMENT APPLI -->
   </div>
     <br /><br />
     <div class="container-fluid">
       <div class="row">
         <div class="col">
-          <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;" class="container-fluid">
+          <a target="_blank" onclick="scanInput(); return false" style="text-decoration: none;">
               <div align="center">
                   <h1>Input</h1>
                   <img src="img/input.png" alt="Input scanner" width="50%"/>
               </div>
           </a>
         </div>
+        <br>
         <div class="col">
           <a target="_blank" onclick="scanOutput(); return false" style="text-decoration: none;">
               <div align="center">
@@ -62,15 +65,18 @@
           </a>
         </div>
       </div>
+      <br>
+      <br>
       <div class="row">
         <div class="col">
-          <a target="_blank" onclick="email(); return false" style="text-decoration: none;" class="container-fluid">
+          <a target="_blank" onclick="email(); return false" style="text-decoration: none;">
               <div align="center">
                   <h1>Export</h1>
                   <img src="img/export.png" alt="Output scanner" width="50%" />
               </div>
           </a>
         </div>
+        <br>
         <div class="col">
           <a target="_blank" onclick="deleteContent(); return false" style="text-decoration: none;">
               <div align="center">
@@ -80,11 +86,13 @@
           </a>
         </div>
       </div>
+      <br>
       <div align="center">
         <div class="btn btn-dark">
           <a href="https://logiciel-gestion-stock.fr" style="color: white; text-decoration: none;">Click here to visit our website and get more information</a>
         </div>
       </div>
+      <br><br>
         <div class="row">
             <div class="col">
                 <a target="_blank" style="text-decoration: none;" onclick="showInfo();">
@@ -164,7 +172,7 @@
                         navigator.notification.prompt("Enter the quantity : ", function (input) {
                             var nombre = input.input1;
                             var name = result.format;
-                            var value = 'I;' + result.text + ';' + nombre;
+                            var value = 'I;' + result.text + ';' + nombre + ";";
                             var data = localStorage.getItem("LocalData");
 
                             data = JSON.parse(data);
@@ -195,7 +203,7 @@
                         navigator.notification.prompt("Enter the quantity : ", function (input) {
                             var nombre = input.input1;
                             var name = result.format;
-                            var value = 'O;' + result.text + ';' + nombre;
+                            var value = 'O;' + result.text + ';' + nombre + ";";
                             var data = localStorage.getItem("LocalData");
 
                             data = JSON.parse(data);

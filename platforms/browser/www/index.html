@@ -171,7 +171,7 @@
                         navigator.notification.prompt("Enter the quantity : ", function (input) {
                             var nombre = input.input1;
                             var name = result.format;
-                            var value = 'I;' + result.text + ';' + nombre;
+                            var value = 'I;' + result.text + ';' + nombre + ";";
                             var data = localStorage.getItem("LocalData");
 
                             data = JSON.parse(data);
@@ -202,7 +202,7 @@
                         navigator.notification.prompt("Enter the quantity : ", function (input) {
                             var nombre = input.input1;
                             var name = result.format;
-                            var value = 'O;' + result.text + ';' + nombre;
+                            var value = 'O;' + result.text + ';' + nombre + ";";
                             var data = localStorage.getItem("LocalData");
 
                             data = JSON.parse(data);
