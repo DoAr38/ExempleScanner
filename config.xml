@@ -49,11 +49,6 @@
         <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
           <string>SoltiScan need to access your's camera to take picture</string>
         </edit-config>
-
-<edit-config target="Privacy - Camera Usage Description" file="*-Info.plist" mode="merge">
-          <string>SoltiScanIOS requires access to your phone’s camera to take pictures of scanned barcodes</string>
-        </edit-config>
-
     </platform>
 
     <preference name="phonegap-version" value="cli-8.1.1" />
