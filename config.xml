@@ -47,7 +47,7 @@
         <allow-intent href="itms-apps:*" />
 
         <edit-config target="NSCameraUsageDescription" file="*-Info.plist" mode="merge">
-          <string>SoltiScan need to access your's camera to take picture</string>
+          <string>SoltiScan need to access to your camera to take picture of scanned barcodes, we don't share or copy your informations</string>
         </edit-config>
     </platform>
 
