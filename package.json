@@ -15,7 +15,7 @@
     "cordova-ios": "^5.0.1",
     "cordova-plugin-dialogs": "^2.0.1",
     "cordova-plugin-email-composer": "^0.9.2",
-    "cordova-plugin-inappbrowser": "^3.0.0",
+    "cordova-plugin-inappbrowser": "^3.1.0",
     "phonegap-plugin-barcodescanner": "^8.0.1"
   },
   "devDependencies": {
